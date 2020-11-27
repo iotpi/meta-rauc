@@ -67,6 +67,7 @@ python __anonymous () {
 }
 
 RRECOMMENDS_${PN}_append = " ${PN}-mark-good"
+RDEPENDS_${PN} += "${@bb.utils.contains('RAUC_CASYNC_BUNDLE', '1', 'fakeroot casync', '', d)}"
 
 FILES_${PN}-mark-good = "${systemd_unitdir}/system/rauc-mark-good.service ${sysconfdir}/init.d/rauc-mark-good"
 
