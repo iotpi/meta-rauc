@@ -8,9 +8,9 @@ inherit autotools
 
 DEPENDS = "libcap"
 
-SRC_URI = "\
-    http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_${PV}.orig.tar.gz \
-"
+SRC_URI = "http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_${PV}.orig.tar.gz \
+           file://0001-make-fakeroob-pass-building.patch \
+           "
 
 # fakeroot needs getopt which is provided by the util-linux package
 RDEPENDS_${PN} = "util-linux bash"

@@ -1,0 +1,35 @@
+From 81086abfbf39471e9a4d53cef9b4e136f7b8c0a7 Mon Sep 17 00:00:00 2001
+From: Yang Hongbo <yanghongbo@iotpi.io>
+Date: Sun, 29 Nov 2020 00:33:49 +0800
+Subject: [PATCH] make fakeroob pass building
+
+---
+ Makefile.am  | 2 +-
+ configure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 76210b5..4ed7463 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS=foreign
+ ACLOCAL_AMFLAGS = -I build-aux
+-SUBDIRS=doc scripts test
++SUBDIRS=scripts
+ 
+ noinst_LTLIBRARIES = libcommunicate.la libmacosx.la
+ libcommunicate_la_SOURCES = communicate.c
+diff --git a/configure.ac b/configure.ac
+index 73415d2..2e389d1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,7 +50,7 @@ int main() {
+     return 0;
+   }
+ 
+-}], [ac_cv_use_ipc=sysv], [ac_cv_use_ipc=tcp])
++}], [ac_cv_use_ipc=sysv], [ac_cv_use_ipc=tcp], [ac_cv_use_ipc=$ac_cv_use_ipc])
+ 
+   if test $ac_cv_use_ipc = "tcp"; then
+     AC_MSG_RESULT([No, using TCP])
